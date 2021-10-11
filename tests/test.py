@@ -1,4 +1,4 @@
-from main import foo
+from app.main import foo
 
 def test_foo():
     assert foo('bar') == 'foobar'
