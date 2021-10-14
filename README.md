@@ -1,4 +1,5 @@
 # Testing mandatory
+[![codecov](https://codecov.io/gh/AndreasPB/sd-sem1-testing/branch/master/graph/badge.svg?token=DDUU0AX37Q)](https://codecov.io/gh/AndreasPB/sd-sem1-testing)
 
 
 ### First time setup
