@@ -11,3 +11,9 @@ services:
         volumes:
             - ./frontend:/app
             - /app/node_modules
+    backend:
+        restart: always
+        build: ./backend
+        container_name: backendapi
+        ports:
+            - 2000:2000
