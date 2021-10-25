@@ -1,4 +1,5 @@
 # Testing mandatory
+[![CI](https://github.com/AndreasPB/sd-sem1-testing/actions/workflows/main.yml/badge.svg)](https://github.com/AndreasPB/sd-sem1-testing/actions/workflows/main.yml)
 [![codecov](https://codecov.io/gh/AndreasPB/sd-sem1-testing/branch/master/graph/badge.svg?token=DDUU0AX37Q)](https://codecov.io/gh/AndreasPB/sd-sem1-testing)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/AndreasPB/sd-sem1-testing/master.svg)](https://results.pre-commit.ci/latest/github/AndreasPB/sd-sem1-testing/master)
 [![CodeFactor status](https://www.codefactor.io/repository/github/AndreasPB/sd-sem1-testing/badge)](https://www.codefactor.io/repository/github/AndreasPB/sd-sem1-testing)

@@ -1,5 +1,10 @@
 version: "3"
 services:
+    backend:
+        build: ./backend
+        container_name: backend
+        ports:
+            - 2000:2000
     frontend:
         restart: on-failure
         build: ./frontend
