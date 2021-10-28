@@ -1,6 +1,6 @@
 <div class="navbar mb-2 shadow-lg bg-neutral text-neutral-content">
 	<div class="flex-1 px-2 mx-2">
-		<span class="text-lg font-bold"> daisyUI </span>
+		<span class="text-lg font-bold"> KEANet </span>
 	</div>
 	<div class="flex-none hidden px-2 mx-2 lg:flex">
 		<div class="flex items-stretch">
