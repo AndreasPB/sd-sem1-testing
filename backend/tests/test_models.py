@@ -17,8 +17,8 @@ def test_purchase():
         internet_connection=InternetConnection(),
         phone_lines=PhoneLine(amount=3),
         cell_phones=[
-            CellPhone(name="Nokia 3310", price=1337),
-            CellPhone(name="Sony Ericsson XPREIA X10 mini pro", price=1337),
+            CellPhone(name="Nokia 3310", price=1337, amount=1),
+            CellPhone(name="Sony Ericsson XPREIA X10 mini pro", price=1337, amount=10),
         ],
     )
 
@@ -33,32 +33,43 @@ def test_total():
 
 def test_internet_connection():
     assert InternetConnection(price=200, regularity=Regularity.MONTHLY)
+    assert InternetConnection()
 
     with pytest.raises(ValidationError):
-        assert InternetConnection(price=0, regularity=Regularity.MONTHLY)
+        assert InternetConnection(price=0)
 
     with pytest.raises(ValidationError):
-        assert InternetConnection(price=200, regularity="foobarbaz")
+        assert InternetConnection(regularity="foobarbaz")
 
 
 def test_cell_phone():
-    assert CellPhone(name="Nokia 3310", price=1337, regularity=Regularity.ONCE)
+    assert CellPhone(
+        name="Nokia 3310", price=1337, regularity=Regularity.ONCE, amount=3
+    )
 
     with pytest.raises(ValidationError):
-        assert CellPhone(name="Nokia 3310", price=420, regularity=Regularity.ONCE)
+        assert CellPhone(name="Nokia 3310", price=420)
 
     with pytest.raises(ValidationError):
         assert CellPhone(name="Nokia 3310", price=1337, regularity="foobarbaz")
 
+    with pytest.raises(ValidationError):
+        assert CellPhone(name="Nokia 3310", price=1337, amount=0)
+
 
 def test_phone_line():
     assert PhoneLine(price=150, amount=3, regularity=Regularity.MONTHLY)
+    assert PhoneLine(amount=1)
+    assert PhoneLine(amount=8)
 
     with pytest.raises(ValidationError):
-        assert PhoneLine(price=123, amount=3, regularity=Regularity.MONTHLY)
+        assert PhoneLine(price=123)
 
     with pytest.raises(ValidationError):
-        assert PhoneLine(price=150, amount=0, regularity=Regularity.MONTHLY)
+        assert PhoneLine(amount=0)
 
     with pytest.raises(ValidationError):
-        assert PhoneLine(price=150, amount=3, regularity="foobarbaz")
+        assert PhoneLine(amount=9)
+
+    with pytest.raises(ValidationError):
+        assert PhoneLine(regularity="foobarbaz")
