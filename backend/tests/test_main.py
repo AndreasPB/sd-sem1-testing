@@ -1,7 +1,6 @@
 from app.main import foo, app
 from fastapi.testclient import TestClient
 
-
 client = TestClient(app)
 
 
@@ -63,3 +62,30 @@ def test_post_total_price_empty_request():
     response = client.post("/totalprice/", json={})
 
     assert response.json() == {"total_price": 0}
+
+
+def test_read_cellphones():
+    response = client.get("/cellphones")
+
+    assert response.status_code == 200
+    assert response.json() == [
+        {"name": "Motorola G99", "price": 800, "amount": 1, "regularity": "Once"},
+        {"name": "iPhone 99", "price": 6000, "amount": 1, "regularity": "Once"},
+        {"name": "Samsung Galaxy 99", "price": 1000, "amount": 1, "regularity": "Once"},
+        {"name": "Sony Xperia 99", "price": 900, "amount": 1, "regularity": "Once"},
+        {"name": "Huawei 99", "price": 900, "amount": 1, "regularity": "Once"},
+    ]
+
+
+def test_read_internet_connection():
+    response = client.get("/internetconnection")
+
+    assert response.status_code == 200
+    assert response.json() == {"price": 200, "regularity": "Monthly"}
+
+
+def test_read_phoneline():
+    response = client.get("/phoneline")
+
+    assert response.status_code == 200
+    assert response.json() == {"price": 150, "amount": 1, "regularity": "Monthly"}
