@@ -75,3 +75,17 @@ def test_read_cellphones():
         {"name": "Sony Xperia 99", "price": 900, "amount": 1, "regularity": "Once"},
         {"name": "Huawei 99", "price": 900, "amount": 1, "regularity": "Once"},
     ]
+
+
+def test_read_internet_connection():
+    response = client.get("/internetconnection")
+
+    assert response.status_code == 200
+    assert response.json() == {"price": 200, "regularity": "Monthly"}
+
+
+def test_read_phoneline():
+    response = client.get("/phoneline")
+
+    assert response.status_code == 200
+    assert response.json() == {"price": 150, "amount": 1, "regularity": "Monthly"}
