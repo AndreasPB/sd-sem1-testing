@@ -46,46 +46,44 @@
                     <p>Phone lines: {phoneLines}</p>
                     <input type="range" max="8" bind:value={phoneLines} class="range range-primary">
                     <!-- Cell phones -->
-                    <p>Cell phones:</p>
-                    <div class="flex flex-col w-full lg:flex-row">
-                       <select class="select select-bordered w-full max-w-xs" bind:value={selectedPhone}>
-                          <option disabled>Select phones</option>
-                          {#each phones as phone}
-                              <option value={phone}>{phone.name}</option>
-                          {/each}
-                       </select>
-                       <div class="divider divider-vertical">
-                           <button class="btn-ghost" on:click={addPhone(selectedPhone)}>&gt</button>
-                           <button class="btn-ghost" on:click={removePhone(selectedPhones[selectedPhones.length - 1])}> &lt </button>
-                       </div>
                        <div class="overflow-x-auto">
                          <table class="table w-full table-compact">
                            <thead>
                              <tr>
-                               <th></th>
                                <th>Name</th>
                                <th>Price</th>
                                <th>Amount</th>
                                <th>Regularity</th>
+                               <th>Purchase?</th>
                              </tr>
                            </thead>
                            <tbody>
-                               {#each selectedPhones as phone, i}
+                               {#each phones as phone, i}
                                    <tr>
-                                       <th>
-                                           {i + 1}
-                                       </th>
                                        <td>
                                          {phone.name}
                                        </td>
                                        <td>
-                                         {phone.price}
+                                         {phone.price*phone.amount}
                                        </td>
                                        <td>
-                                         {phone.amount}
+                                          <select class="select" bind:value={phone.amount}>
+                                            <option disabled>Amount</option>
+                                            {#each Array(10) as _, i}
+                                              <option>{i+1}</option>
+                                            {/each}
+                                          </select>
                                        </td>
                                        <td>
                                          {phone.regularity}
+                                       </td>
+                                       <td>
+                                          <div class="form-control">
+                                            <label class="cursor-pointer label">
+                                              <input type="checkbox" checked={false} class="checkbox checkbox-primary"
+                                                value={phone} bind:group={selectedPhones}>
+                                            </label>
+                                        </div>
                                        </td>
                                    </tr>
                                {/each}
@@ -99,7 +97,6 @@
                     <button class="btn btn-primary">Buy</button>
                 </div>
             </div>
-		</div>
 	</main>
 	<Footer />
 </body>
